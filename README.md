@@ -1,65 +1,126 @@
 # Datelume
 
-Datelume is a polished wall calendar frontend built with Next.js 14. It pairs a physical-calendar-inspired monthly layout with date range selection and locally stored notes for lightweight planning.
+A polished wall-calendar style frontend built with **Next.js 14 (App Router)**. Datelume combines a physical monthly calendar layout with **date-range selection** and **locally stored notes** for lightweight planning—no backend required.
+
+## Preview
+
+> Add a screenshot or GIF here (recommended)
+>
+> - `public/` is a good place for screenshots
+> - Example: `![Datelume preview](./public/preview.png)`
+
+---
 
 ## Features
 
-- Wall calendar UI for the current month
-- Interactive date range selection with clear start, end, and in-between states
-- Notes panel tied to the selected range or the active month
-- Responsive layout with a hero image, calendar grid, and notes section
+- **Wall calendar UI** for the current month
+- **Interactive date range selection** with clear *start*, *end*, and *in-between* states
+- **Notes panel** tied to the selected range or the active month
+- **Local persistence** using `localStorage`
+- **Responsive layout** with a hero image, calendar grid, and notes section
+
+---
 
 ## Tech Stack
 
-- Next.js 14 (App Router)
-- TypeScript
-- TailwindCSS
-- date-fns
+- **Next.js 14** (App Router)
+- **TypeScript**
+- **Tailwind CSS**
+- **date-fns**
 
-## Setup Instructions
+---
 
-1. Clone the repository.
-2. Install dependencies:
+## Getting Started
+
+### Prerequisites
+- Node.js (LTS recommended)
+- npm (or your preferred package manager)
+
+### Installation
 
 ```bash
+git clone https://github.com/krHimanshu123/Datelume.git
+cd Datelume
 npm install
 ```
 
-3. Start the development server:
+### Run locally
 
 ```bash
 npm run dev
 ```
 
-4. Open `http://localhost:3000`.
+Open:
+- `http://localhost:3000`
+
+### Production build
+
+```bash
+npm run build
+npm run start
+```
+
+---
+
+## How It Works (High Level)
+
+### Date range selection
+Datelume models selection as:
+- **No selection**
+- **Single-day / start date**
+- **End date**
+- **Intermediate dates** (between start and end)
+
+This makes the calendar feel like selecting dates on a physical planner while still being intuitive on the web.
+
+### Notes + Persistence
+Notes are stored in `localStorage` to keep the app:
+- fast
+- offline-friendly
+- simple (no backend or auth needed)
+
+---
+
+## Project Structure (Key Components)
+
+- `Calendar` — overall calendar section
+- `CalendarGrid` — renders the month grid
+- `DayCell` — single cell behavior + selection states
+- `DateRangeContext` — shared selection state
+- `NotesPanel` — note editing and persistence
+- `HeroImage` — visual anchor for the wall-calendar layout
+- `calendarUtils` — date logic + storage key helpers
+
+---
 
 ## Design Decisions
 
-### Why Next.js
+### Why Next.js (App Router)
+Next.js 14 provides a clean structure for component-driven UI, plus strong defaults (routing, bundling, dev experience). It’s a great fit for a focused, modern frontend build.
 
-Next.js 14 with the App Router provides a clean, modern React project structure with excellent developer ergonomics for component-driven frontend work. It is a strong fit for a focused assessment project without introducing unnecessary architectural overhead.
+### Why `localStorage`
+The notes feature only needs lightweight client-side persistence. `localStorage` avoids backend complexity while preserving notes across refreshes.
 
-### Why localStorage
+---
 
-The notes feature only needs lightweight client-side persistence. `localStorage` keeps the implementation simple, avoids backend complexity, and preserves notes across refreshes for both monthly and selected-range entries.
+## Roadmap / Future Improvements
 
-### Component Architecture
+- Month navigation (browse beyond current month)
+- Optional auto-save + save-state feedback
+- Theme switching and richer customization
+- Holiday markers, event badges, or lightweight annotations
 
-The UI is split into small, reusable pieces:
+---
 
-- `Calendar` handles the overall calendar section
-- `CalendarGrid` renders the current month grid
-- `DayCell` isolates date-cell behavior and states
-- `DateRangeContext` centralizes shared date selection state
-- `NotesPanel` manages note editing and persistence
-- `HeroImage` provides the visual anchor for the wall-calendar layout
-- `calendarUtils` keeps date logic and storage key helpers separate from UI components
+## Contributing
 
-This structure keeps responsibilities clear and makes the codebase easier to maintain or extend.
+If you’d like to contribute:
+1. Fork the repo
+2. Create a feature branch
+3. Open a PR
 
-## Future Improvements
+---
 
-- Add month navigation for browsing beyond the current month
-- Introduce optional auto-save with save-state feedback per keystroke
-- Support theme switching and richer visual customization
-- Add holiday markers, event badges, or lightweight calendar annotations
+## License
+
+No license currently specified. If you want this to be open-source friendly, consider adding an MIT License.
