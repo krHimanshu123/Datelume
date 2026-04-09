@@ -31,7 +31,7 @@ export function DayCell({
       aria-pressed={isSelected || isInRange}
       aria-label={`Select ${format(date, "MMMM d, yyyy")}`}
       className={clsx(
-        "group relative min-h-24 rounded-2xl border border-transparent px-3 py-3 text-left transition-all duration-200 ease-out focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent/50 sm:min-h-28 sm:px-4",
+        "group relative min-h-16 rounded-2xl border border-transparent px-2 py-2 text-center transition-all duration-200 ease-out focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent/50 sm:min-h-28 sm:px-4 sm:py-3 sm:text-left",
         isCurrentMonth ? "text-ink" : "text-stone-400",
         isInRange && "border-accentSoft bg-accentSoft/70",
         isSelected && "border-accent bg-accent text-white shadow-lg shadow-accent/20",
@@ -48,7 +48,7 @@ export function DayCell({
       >
         {format(date, "d")}
       </span>
-      <span className="mt-6 block text-xs uppercase tracking-[0.24em] text-current/60">
+      <span className="mt-6 hidden text-xs uppercase tracking-[0.24em] text-current/60 sm:block">
         {isSameDay(date, new Date()) ? "Today" : format(date, "EEE")}
       </span>
     </button>
